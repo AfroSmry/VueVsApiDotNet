@@ -28,6 +28,6 @@ module.exports = {
                 target: 'https://localhost:7108/'
             }
         },
-        port: 7108
+        port: 5002
     }
 }

@@ -18,13 +18,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="users in post" :key="users.id">
-                        <td>{{ users.Id }}</td>
-                        <td>{{ users.FirstName }}</td>
-                        <td>{{ users.SecondName }}</td>
-                        <td>{{ users.SurName }}</td>
-                        <td>{{ users.Adress }}</td>
-                        <td>{{ users.Phone }}</td>
+                    <tr v-for="Users in post" :key="Users">
+                        <td>{{ Users.Id }}</td>
+                        <td>{{ Users.FirstName }}</td>
+                        <td>{{ Users.SecondName }}</td>
+                        <td>{{ Users.SurName }}</td>
+                        <td>{{ Users.Adress }}</td>
+                        <td>{{ Users.Phone }}</td>
                     </tr>
                 </tbody>
             </table>

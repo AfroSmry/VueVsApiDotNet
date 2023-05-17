@@ -10,7 +10,7 @@ namespace webapi.Models
         public int ProductBalance { get; set; }
         [Required]
         public DateTime DateStart { get; set; }
-        public List<Product>  Products { get; set; }
+        public Product  Products { get; set; }
         public Providers Providers { get; set; }
     }
 }
