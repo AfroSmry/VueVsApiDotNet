@@ -1,0 +1,70 @@
+<template>
+    <div class="post">
+        <div v-if="loading" class="loading">
+            Loading... Please refresh ХУЙ once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationvue">
+                https://aka.ms/jspsintegrationvue</a> for more details.
+        </div>
+
+        <div v-if="post" class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>FirstName</th>
+                        <th>SecondName</th>
+                        <th>SurName</th>
+                        <th>Adress</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="users in post" :key="users.id">
+                        <td>{{ users.Id }}</td>
+                        <td>{{ users.FirstName }}</td>
+                        <td>{{ users.SecondName }}</td>
+                        <td>{{ users.SurName }}</td>
+                        <td>{{ users.Adress }}</td>
+                        <td>{{ users.Phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<script lang="js">
+    import { defineComponent } from 'vue';
+
+    export default defineComponent({
+        data() {
+            return {
+                loading: false,
+                post: null
+            };
+        },
+        created() {
+            // fetch the data when the view is created and the data is
+            // already being observed
+            this.fetchData();
+        },
+        watch: {
+            // call again the method if the route changes
+            '$route': 'fetchData'
+        },
+        methods: {
+            fetchData() {
+                this.post = null;
+                this.loading = true;
+
+                fetch('/api/Users/')
+                    .then(r => r.json())
+                    .then(json => {
+                        this.post = json;
+                        console.log(json);
+                        this.loading = false;
+                        return;
+                    });
+            }
+        },
+    });
+</script>
