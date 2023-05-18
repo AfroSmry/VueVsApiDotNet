@@ -1,7 +1,7 @@
 <template>
     <div class="post">
         <div v-if="loading" class="loading">
-            Loading... Please refresh ХУЙ once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationvue">
+            Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationvue">
                 https://aka.ms/jspsintegrationvue</a> for more details.
         </div>
 
@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="Users in post" :key="Users">
+                    <tr v-for="Users in post" :key="Users.Id">
                         <td>{{ Users.Id }}</td>
                         <td>{{ Users.FirstName }}</td>
                         <td>{{ Users.SecondName }}</td>
@@ -56,7 +56,7 @@
                 this.post = null;
                 this.loading = true;
 
-                fetch('/api/Users/')
+                fetch('https://localhost:7108/api/Users/')
                     .then(r => r.json())
                     .then(json => {
                         this.post = json;

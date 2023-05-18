@@ -25,7 +25,7 @@ module.exports = {
         },
         proxy: {
             '^/Models/Users': {
-                target: 'https://localhost:7108/'
+                target: 'https://localhost:7108/api/Users/'
             }
         },
         port: 5002

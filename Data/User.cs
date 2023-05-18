@@ -2,20 +2,20 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace webapi.Models
+namespace Data
 {
-    public class Users
+    public class User
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
-        public string SecondName { get; set; }
+        public string LastName { get; set; }
         [Required]
-        public string SurName { get; set; }
-        [Required]
-        public string Adress { get; set; }
+        public string Address { get; set; }
         [Required]
         public string Phone { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }

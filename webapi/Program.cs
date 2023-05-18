@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using webapi.Models.DataContext;
+using Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddCors();
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("RequestConn"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("RequestConn")).UseLazyLoadingProxies();
+
 });
 
 var app = builder.Build();

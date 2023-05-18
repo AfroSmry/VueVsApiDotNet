@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace webapi.Models
+namespace Data
 {
     public class Product
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Author { get; set; }
         [Required]
